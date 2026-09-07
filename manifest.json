@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "AmazonHunt — Amazon Niche Research",
+  "short_name": "AmazonHunt",
+  "version": "1.0.0",
+  "description": "Free local Amazon niche research: discover keywords, snapshot search results, audit listings, and download scored niche reports.",
+  "author": "AmazonHunt",
+  "homepage_url": "https://github.com/vtoxi/AmazonHunt",
+  "minimum_chrome_version": "114",
+  "permissions": [
+    "storage",
+    "tabs",
+    "scripting",
+    "alarms",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://www.amazon.com/*",
+    "https://completion.amazon.com/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.amazon.com/*"],
+      "js": [
+        "src/content-scripts/amazon-search-extractor.js",
+        "src/content-scripts/amazon-listing-extractor.js",
+        "src/content-scripts/amazon-autocomplete-extractor.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "AmazonHunt",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

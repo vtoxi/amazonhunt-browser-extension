@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AmazonHunt — Screenshot 1</title>
+<style>
+  :root { --orange:#FF9900; --dark:#232F3E; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { width:1280px; height:800px; overflow:hidden; background:linear-gradient(135deg,#232F3E 0%,#37475A 60%,#131921 100%); display:flex; align-items:center; justify-content:center; font-family:"Segoe UI",Arial,sans-serif; }
+  .scene { display:flex; align-items:center; gap:64px; }
+  .popup { width:390px; background:#f3f3f3; border-radius:16px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.55); }
+  .topbar { background:linear-gradient(180deg,#ffe7b5 0%,#f3f3f3 100%); padding:14px 16px 12px; display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:10px; }
+  .logo { width:36px; height:36px; background:#232F3E; border-radius:10px; display:grid; place-items:center; }
+  .logo svg { display:block; }
+  .brand-name { font-size:15px; font-weight:800; color:#0f1111; letter-spacing:-.02em; }
+  .brand-sub { font-size:10px; color:#666; font-weight:600; margin-top:2px; }
+  .pill { display:flex; align-items:center; gap:6px; padding:5px 10px; border-radius:999px; background:rgba(255,255,255,.85); border:1px solid #e3e6e6; font-size:11px; font-weight:700; color:#232F3E; }
+  .dot { width:7px; height:7px; border-radius:50%; background:#b0aba0; }
+  .content { padding:14px; display:flex; flex-direction:column; gap:10px; }
+  .panel { background:#fff; border:1px solid #e3e6e6; border-radius:12px; padding:14px; box-shadow:0 1px 0 rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.07); }
+  .eyebrow { font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#565959; margin-bottom:8px; display:block; }
+  .seed-input { width:100%; padding:13px 14px; border:1.5px solid #d5d9d9; border-radius:8px; background:#fff; font-size:15px; font-weight:650; font-family:inherit; color:#0f1111; outline:none; }
+  .btn-cta { width:100%; margin-top:13px; display:flex; align-items:center; justify-content:center; gap:8px; padding:13px 16px; background:linear-gradient(180deg,#FFD814 0%,#FF9900 100%); color:#111; font-size:14px; font-weight:700; border:none; border-radius:10px; cursor:pointer; box-shadow:0 6px 16px rgba(255,153,0,.3); }
+  .explainer { margin-top:10px; text-align:center; font-size:11px; color:#8f9192; font-family:inherit; }
+  .more { border:1px solid #e3e6e6; border-radius:12px; background:rgba(255,255,255,.8); padding:11px 14px; display:flex; align-items:center; justify-content:space-between; font-size:12.5px; font-weight:700; color:#232F3E; }
+  .ft { padding:10px 16px 12px; border-top:1px solid rgba(0,0,0,.06); display:flex; align-items:center; justify-content:space-between; font-size:10px; color:#565959; }
+  /* Side copy */
+  .copy { color:#fff; max-width:440px; }
+  .badge { display:inline-block; padding:4px 12px; background:rgba(255,153,0,.2); border:1px solid rgba(255,153,0,.4); border-radius:999px; font-size:12px; color:#FFD814; font-weight:700; margin-bottom:16px; }
+  .copy h1 { font-size:40px; font-weight:900; letter-spacing:-.03em; line-height:1.15; margin-bottom:14px; }
+  .copy h1 span { color:var(--orange); }
+  .copy p { font-size:16px; line-height:1.6; color:#c9d0d5; margin-bottom:24px; }
+  .steps { list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .steps li { display:flex; align-items:center; gap:12px; font-size:14px; color:#c9d0d5; }
+  .steps li .num { width:26px; height:26px; border-radius:50%; background:var(--orange); color:#111; font-size:11px; font-weight:800; display:grid; place-items:center; flex:none; }
+</style>
+</head>
+<body>
+<div class="scene">
+  <div class="copy">
+    <div class="badge">Free &amp; Local</div>
+    <h1>Amazon Niche<br>Research in<br><span>4 Steps</span></h1>
+    <p>Discover winning keywords, audit competition,<br>and get a GO / NO-GO verdict — all in Chrome.</p>
+    <ul class="steps">
+      <li><span class="num">1</span> Discover keywords via autocomplete</li>
+      <li><span class="num">2</span> Snapshot top search results</li>
+      <li><span class="num">3</span> Audit listings for BSR &amp; reviews</li>
+      <li><span class="num">4</span> Download a scored niche report</li>
+    </ul>
+  </div>
+  <div class="popup">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <svg viewBox="0 0 36 36" width="22" height="22" fill="none">
+            <circle cx="15" cy="15" r="7" stroke="#FF9900" stroke-width="2.2" fill="none"/>
+            <path d="M20 20l7 7" stroke="#FF9900" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M9 28 Q16 32 25 28" stroke="#FF9900" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">AmazonHunt</div>
+          <div class="brand-sub">Free · Local niche research</div>
+        </div>
+      </div>
+      <div class="pill"><span class="dot"></span><span>Idle</span></div>
+    </div>
+    <div class="content">
+      <div class="panel">
+        <span class="eyebrow">What niche are you researching?</span>
+        <input class="seed-input" type="text" value="yoga mat" readonly>
+        <button class="btn-cta">Run full research →</button>
+        <p class="explainer">Discover keywords → snapshot search → audit listings → score &amp; report</p>
+      </div>
+      <div class="more"><span>More options &amp; log</span><span>+</span></div>
+    </div>
+    <div class="ft"><span>Free · Local · amazon.com only</span><span style="font-weight:700;color:#232F3E">v1.0.0</span></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AmazonHunt</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="shell mode-idle" id="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">
+          <svg viewBox="0 0 36 36" width="24" height="24" fill="none">
+            <circle cx="16" cy="16" r="7" stroke="#FF9900" stroke-width="2.2" fill="none"/>
+            <path d="M21 21l7 7" stroke="#FF9900" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M11 30 Q20 34 28 30" stroke="#FF9900" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">AmazonHunt</div>
+          <div class="brand-sub">Free · Local niche research</div>
+        </div>
+      </div>
+      <div class="status-pill" id="status-pill">
+        <span id="status-dot" class="dot idle"></span>
+        <span id="status-text">Idle</span>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- Result hero -->
+      <section class="panel result-hero" id="result-hero" hidden>
+        <div class="result-hero-head">
+          <div>
+            <div class="result-label">Latest research</div>
+            <div id="result-seed" class="result-seed">—</div>
+          </div>
+          <span id="result-verdict" class="report-verdict"></span>
+        </div>
+        <p id="result-meta" class="result-meta"></p>
+        <div class="result-actions">
+          <button id="btn-view-report" class="btn btn-dark" type="button">View report</button>
+          <button id="btn-download-report" class="btn btn-ghost" type="button">Download</button>
+        </div>
+      </section>
+
+      <!-- Running: progress -->
+      <section class="panel run-focus" id="run-focus" hidden>
+        <div class="panel-title">Live research</div>
+        <div id="current-step" class="current-step" aria-live="polite">Processing…</div>
+        <div id="progress-info" class="progress-info"></div>
+        <div class="track" style="margin-top:14px"><i></i></div>
+        <button id="btn-stop" class="btn btn-stop" type="button">Stop</button>
+        <div class="mini-log-wrap">
+          <div id="mini-log" class="mini-log"></div>
+        </div>
+      </section>
+
+      <!-- Idle: seed form -->
+      <section class="panel hero" id="hero-panel">
+        <label class="eyebrow" for="input-seed">What niche are you researching?</label>
+        <input type="text" id="input-seed" class="seed-input"
+               placeholder="yoga mat, dog toy, water bottle…"
+               autocomplete="off" spellcheck="false">
+        <span id="seed-error" class="seed-error" style="display:none">Enter a seed keyword to start</span>
+
+        <button id="btn-run" class="btn btn-cta">
+          <span>Run full research</span>
+          <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <p class="pipeline-explainer">Discover keywords → snapshot search → audit listings → score &amp; report</p>
+      </section>
+
+      <!-- More options -->
+      <details class="more-options" id="more-options">
+        <summary>
+          <span>More options &amp; log</span>
+          <span class="chev">+</span>
+        </summary>
+        <div class="more-options-body">
+          <section class="panel log-panel" id="log-panel">
+            <div class="log-head">
+              <div class="panel-title">Activity log</div>
+              <div class="log-tools">
+                <button id="btn-copy-log" class="btn btn-ghost btn-tiny" type="button">Copy</button>
+                <button id="btn-clear-log" class="btn btn-ghost btn-tiny" type="button">Clear</button>
+                <button id="btn-clear-data" class="btn btn-ghost btn-tiny" type="button" title="Erase all saved research data">Clear data</button>
+              </div>
+            </div>
+            <div id="log-area" class="log-area">
+              <div class="log-empty">Logs appear here once a run starts.</div>
+            </div>
+          </section>
+
+          <details class="settings" id="settings-section">
+            <summary>
+              <span>Advanced settings</span>
+              <span class="chev">+</span>
+            </summary>
+            <div class="settings-body">
+              <p class="settings-intro">Recommended: 20 keywords, 10 listings/keyword, 7s delay.</p>
+              <div class="grid-2">
+                <div class="f">
+                  <label for="input-max-keywords">Keywords per run</label>
+                  <input type="number" id="input-max-keywords" value="20" min="1" max="200">
+                  <span class="hint">searched &amp; audited</span>
+                </div>
+                <div class="f">
+                  <label for="input-delay">Page delay (seconds)</label>
+                  <input type="number" id="input-delay" value="7" min="5">
+                  <span class="hint">minimum 5s</span>
+                </div>
+              </div>
+              <div class="divider">Competition</div>
+              <div class="grid-2">
+                <div class="f">
+                  <label for="input-max-listings">Listings per keyword</label>
+                  <input type="number" id="input-max-listings" value="10" min="5" max="30">
+                  <span class="hint">audit depth</span>
+                </div>
+                <div class="f">
+                  <label for="input-max-reviews">Beatable review cap</label>
+                  <input type="number" id="input-max-reviews" value="1000" min="100">
+                  <span class="hint">under = beatable</span>
+                </div>
+                <div class="f">
+                  <label for="input-min-beatable">Min beatable slots</label>
+                  <input type="number" id="input-min-beatable" value="3" min="1" max="10">
+                  <span class="hint">page-one openings</span>
+                </div>
+                <div class="f">
+                  <label for="input-min-price">Min price (USD)</label>
+                  <input type="number" id="input-min-price" value="10" min="1">
+                  <span class="hint">price viability</span>
+                </div>
+              </div>
+              <div class="set-actions">
+                <button id="btn-save-settings" class="btn btn-dark" type="button">Save settings</button>
+                <button id="btn-reset-settings" class="btn btn-ghost" type="button">Reset</button>
+              </div>
+              <span id="settings-saved" class="saved-msg" style="display:none">Saved</span>
+            </div>
+          </details>
+        </div>
+      </details>
+    </main>
+
+    <footer class="ft">
+      <span class="ft-left">Free · Local · amazon.com only</span>
+      <span class="ft-ver">v1.0.0</span>
+    </footer>
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>

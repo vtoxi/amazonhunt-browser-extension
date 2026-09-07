@@ -33,10 +33,12 @@ Content is processed locally. The Extension does not upload results to any Amazo
 | Permission | Purpose |
 |------------|---------|
 | `storage` | Save settings and local research data |
+| `unlimitedStorage` | Store research results and generated reports locally without the standard extension storage quota |
 | `tabs` | Open and control research tabs on Amazon |
 | `scripting` | Inject content scripts into Amazon pages during a run |
 | `alarms` | Keep long research runs alive under Manifest V3 |
 | `downloads` | Save HTML niche reports to your Downloads folder |
+| `notifications` | Notify you when a long-running research pipeline finishes because the popup may no longer be open |
 | Host access to `amazon.com` | Read Amazon search and listing pages during a run |
 | Host access to `completion.amazon.com` | Fetch autocomplete keyword suggestions |
 

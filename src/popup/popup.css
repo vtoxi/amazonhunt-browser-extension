@@ -49,9 +49,16 @@ body { min-height:520px; max-height:560px; overflow:hidden; color:var(--ink); fo
 #status-pill.is-error { border-color:rgba(185,28,28,.3); }
 .content { flex:1; min-height:0; overflow-y:auto; padding:0 14px 12px; display:flex; flex-direction:column; gap:10px; scrollbar-width:thin; scrollbar-color:var(--line-2) transparent; }
 .content>*{ flex-shrink:0; }
+/* Default: hide panels that are only visible in specific modes */
+#result-hero, #run-focus { display: none; }
+/* mode-idle: only the hero (seed form) and more-options are shown */
 .shell.mode-idle #result-hero,.shell.mode-idle #run-focus { display:none!important; }
+/* mode-running: show run-focus panel; hide everything else */
 .shell.mode-running #result-hero,.shell.mode-running #hero-panel,.shell.mode-running #more-options { display:none!important; }
+.shell.mode-running #run-focus { display:block!important; }
+/* mode-result: show result-hero; hide run-focus; keep hero-panel for re-running */
 .shell.mode-result #run-focus { display:none!important; }
+.shell.mode-result #result-hero { display:block!important; }
 .shell.mode-result #hero-panel { display:block; }
 .result-hero { border-color:rgba(255,153,0,.35); background:linear-gradient(180deg,#fffdf7 0%,#fff8ee 100%); }
 .result-hero-head { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; }

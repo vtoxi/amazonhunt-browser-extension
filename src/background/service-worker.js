@@ -224,6 +224,16 @@ async function runFullPipeline(seedKeyword) {
     await chrome.storage.local.set({ lastRunTime: Date.now() });
     await log('success', `=== Pipeline complete for "${seedKeyword}" — ${step4.verdict} ===`);
 
+    // Notify user — popup closes during long runs so they may not be watching
+    const emoji = step4.verdict === 'GO' ? '✅' : step4.verdict === 'MAYBE' ? '⚠️' : '❌';
+    chrome.notifications.create('ah-done', {
+      type: 'basic',
+      iconUrl: chrome.runtime.getURL('icons/icon48.png'),
+      title: `AmazonHunt — ${step4.verdict}`,
+      message: `"${seedKeyword}" research complete. ${emoji} Click the extension icon to view your report.`,
+      priority: 2,
+    });
+
   } catch (err) {
     await log('error', `Pipeline error: ${err.message}`);
     await updateState({ running: false, lastStatus: 'error', progress: err.message });

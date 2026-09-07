@@ -9,10 +9,12 @@
   "minimum_chrome_version": "114",
   "permissions": [
     "storage",
+    "unlimitedStorage",
     "tabs",
     "scripting",
     "alarms",
-    "downloads"
+    "downloads",
+    "notifications"
   ],
   "host_permissions": [
     "https://www.amazon.com/*",

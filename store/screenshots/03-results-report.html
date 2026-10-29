@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AmazonHunt — Screenshot 3 (Report)</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { width:1280px; height:800px; overflow:hidden; background:linear-gradient(135deg,#0d1117 0%,#232F3E 100%); display:flex; align-items:center; justify-content:center; gap:48px; font-family:"Segoe UI",Arial,sans-serif; }
+  .popup { width:390px; flex:none; background:#f3f3f3; border-radius:16px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.55); }
+  .topbar { background:linear-gradient(180deg,#ffe7b5 0%,#f3f3f3 100%); padding:14px 16px 12px; display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:10px; }
+  .logo { width:36px; height:36px; background:#232F3E; border-radius:10px; display:grid; place-items:center; }
+  .brand-name { font-size:15px; font-weight:800; color:#0f1111; letter-spacing:-.02em; }
+  .brand-sub { font-size:10px; color:#666; margin-top:2px; }
+  .pill { display:flex; align-items:center; gap:6px; padding:5px 10px; border-radius:999px; background:rgba(255,255,255,.85); border:1px solid rgba(21,128,61,.3); font-size:11px; font-weight:700; color:#232F3E; }
+  .dot-ok { width:7px; height:7px; border-radius:50%; background:#22c55e; }
+  .content { padding:14px; display:flex; flex-direction:column; gap:10px; }
+  .result-panel { background:linear-gradient(180deg,#fffdf7 0%,#fff8ee 100%); border:1px solid rgba(255,153,0,.35); border-radius:12px; padding:14px; }
+  .result-label { font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#565959; }
+  .result-seed { font-size:17px; font-weight:800; color:#0f1111; margin-top:4px; letter-spacing:-.02em; }
+  .head-row { display:flex; align-items:flex-start; justify-content:space-between; }
+  .verdict-badge { padding:3px 12px; border-radius:999px; background:#dcfce7; color:#166534; font-size:11px; font-weight:700; margin-top:4px; }
+  .result-meta { margin-top:8px; font-size:11.5px; color:#565959; }
+  .btn-row { display:flex; gap:8px; margin-top:12px; }
+  .btn-dark { flex:1; padding:10px 14px; background:#232F3E; color:#fff; border:none; border-radius:8px; font-size:12.5px; font-weight:700; cursor:pointer; }
+  .btn-ghost { flex:1; padding:7px 11px; background:rgba(255,255,255,.7); border:1px solid #d5d9d9; color:#232F3E; border-radius:8px; font-size:11.5px; font-weight:700; cursor:pointer; }
+  /* Report preview */
+  .report-preview { flex:1; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 24px 60px rgba(0,0,0,.4); max-width:660px; }
+  .rp-header { background:#232F3E; padding:20px 24px; }
+  .rp-header h1 { color:#fff; font-size:18px; font-weight:800; }
+  .rp-header .sub { color:#a8b4c0; font-size:12px; margin-top:4px; }
+  .rp-verdict { display:inline-flex; align-items:center; gap:8px; margin-top:12px; padding:8px 18px; border-radius:999px; background:#dcfce7; color:#166534; font-size:16px; font-weight:800; }
+  .rp-body { padding:20px 24px; }
+  .meta-row { display:flex; gap:12px; margin-bottom:18px; }
+  .meta-card { flex:1; padding:12px; background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; }
+  .meta-card .lbl { font-size:10px; font-weight:700; text-transform:uppercase; color:#666; letter-spacing:.05em; }
+  .meta-card .val { font-size:22px; font-weight:800; margin-top:2px; color:#0f1111; }
+  table { width:100%; border-collapse:collapse; font-size:12px; }
+  th { background:#232F3E; color:#fff; padding:8px 10px; text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.04em; }
+  td { padding:8px 10px; border-bottom:1px solid #e5e7eb; }
+  .go-cell { background:#dcfce7; color:#166534; font-weight:700; text-align:center; border-radius:6px; }
+  .maybe-cell { background:#fef9c3; color:#854d0e; font-weight:700; text-align:center; border-radius:6px; }
+  .nogo-cell { background:#fee2e2; color:#991b1b; font-weight:700; text-align:center; border-radius:6px; }
+</style>
+</head>
+<body>
+  <div class="popup">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <svg viewBox="0 0 36 36" width="22" height="22" fill="none">
+            <circle cx="15" cy="15" r="7" stroke="#FF9900" stroke-width="2.2" fill="none"/>
+            <path d="M20 20l7 7" stroke="#FF9900" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">AmazonHunt</div>
+          <div class="brand-sub">Free · Local niche research</div>
+        </div>
+      </div>
+      <div class="pill"><span class="dot-ok"></span><span>Complete</span></div>
+    </div>
+    <div class="content">
+      <div class="result-panel">
+        <div class="head-row">
+          <div>
+            <div class="result-label">Latest research</div>
+            <div class="result-seed">yoga mat</div>
+          </div>
+          <span class="verdict-badge">GO</span>
+        </div>
+        <p class="result-meta">Verdict: GO · 6 GO keywords · Best score: 74/100</p>
+        <div class="btn-row">
+          <button class="btn-dark">View report</button>
+          <button class="btn-ghost">Download</button>
+        </div>
+      </div>
+      <div style="border:1px solid #e3e6e6;border-radius:12px;background:rgba(255,255,255,.8);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;font-size:12.5px;font-weight:700;color:#232F3E;">
+        <span>More options &amp; log</span><span>+</span>
+      </div>
+    </div>
+    <div style="padding:10px 16px 12px;border-top:1px solid rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#565959;">
+      <span>Free · Local · amazon.com only</span><span style="font-weight:700;color:#232F3E">v1.0.0</span>
+    </div>
+  </div>
+
+  <div class="report-preview">
+    <div class="rp-header">
+      <h1>AmazonHunt Niche Report</h1>
+      <div class="sub">Seed: yoga mat · Generated Sep 7, 2026 09:48</div>
+      <div class="rp-verdict">✅ GO</div>
+    </div>
+    <div class="rp-body">
+      <div class="meta-row">
+        <div class="meta-card"><div class="lbl">Keywords</div><div class="val">20</div></div>
+        <div class="meta-card"><div class="lbl">GO Keywords</div><div class="val" style="color:#15803d">6</div></div>
+        <div class="meta-card"><div class="lbl">Best Score</div><div class="val">74/100</div></div>
+        <div class="meta-card"><div class="lbl">Beatable Cap</div><div class="val">&lt;1000</div></div>
+      </div>
+      <table>
+        <thead><tr><th>Keyword</th><th>Score</th><th>Avg Price</th><th>Avg Reviews</th><th>Beatable</th><th>Verdict</th></tr></thead>
+        <tbody>
+          <tr><td>yoga mat thick</td><td><b>74</b>/100</td><td>$32.50</td><td>412</td><td>5</td><td class="go-cell">GO</td></tr>
+          <tr><td>yoga mat non slip</td><td><b>68</b>/100</td><td>$28.99</td><td>587</td><td>4</td><td class="go-cell">GO</td></tr>
+          <tr><td>yoga mat for men</td><td><b>61</b>/100</td><td>$34.00</td><td>743</td><td>3</td><td class="go-cell">GO</td></tr>
+          <tr><td>yoga mat beginner</td><td><b>48</b>/100</td><td>$22.00</td><td>1240</td><td>2</td><td class="maybe-cell">MAYBE</td></tr>
+          <tr><td>yoga mat</td><td><b>32</b>/100</td><td>$26.00</td><td>4820</td><td>1</td><td class="nogo-cell">NO-GO</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

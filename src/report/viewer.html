@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AmazonHunt Report</title>
+  <style>
+    body { font-family:"Segoe UI",Arial,sans-serif; background:#f3f3f3; display:flex; align-items:center; justify-content:center; min-height:100vh; margin:0; }
+    .card { background:#fff; border-radius:12px; padding:32px; max-width:480px; text-align:center; box-shadow:0 4px 24px rgba(0,0,0,.1); }
+    h1 { font-size:20px; color:#232F3E; margin-bottom:8px; }
+    p { color:#666; font-size:14px; margin-bottom:20px; }
+    button { padding:12px 24px; background:#FF9900; color:#111; border:none; border-radius:8px; font-size:14px; font-weight:700; cursor:pointer; }
+    button:hover { background:#e88900; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>AmazonHunt Report</h1>
+    <p id="msg">Loading your niche report…</p>
+    <button id="btn-dl" style="display:none">Download Report</button>
+  </div>
+  <script>
+    (async () => {
+      const data = await chrome.storage.local.get('lastReport');
+      const report = data.lastReport;
+      if (!report || !report.html) {
+        document.getElementById('msg').textContent = 'No report found. Run a full research pipeline first.';
+        return;
+      }
+      // Open report in a new tab via blob
+      const blob = new Blob([report.html], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      document.getElementById('msg').textContent = `Report ready for "${report.seedKeyword}" — Verdict: ${report.verdict}`;
+      const btn = document.getElementById('btn-dl');
+      btn.style.display = '';
+      btn.addEventListener('click', () => {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = report.filename || 'amazonhunt_report.html';
+        a.click();
+      });
+      // Auto-open
+      window.location.href = url;
+    })();
+  </script>
+</body>
+</html>

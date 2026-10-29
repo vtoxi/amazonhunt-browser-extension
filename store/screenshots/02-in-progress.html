@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AmazonHunt — Screenshot 2 (Running)</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { width:1280px; height:800px; overflow:hidden; background:linear-gradient(135deg,#131921 0%,#232F3E 100%); display:flex; align-items:center; justify-content:center; font-family:"Segoe UI",Arial,sans-serif; }
+  .popup { width:390px; background:#f3f3f3; border-radius:16px; overflow:hidden; box-shadow:0 32px 80px rgba(0,0,0,.55); }
+  .topbar { background:linear-gradient(180deg,#ffe7b5 0%,#f3f3f3 100%); padding:14px 16px 12px; display:flex; align-items:center; justify-content:space-between; }
+  .brand { display:flex; align-items:center; gap:10px; }
+  .logo { width:36px; height:36px; background:#232F3E; border-radius:10px; display:grid; place-items:center; }
+  .brand-name { font-size:15px; font-weight:800; color:#0f1111; letter-spacing:-.02em; }
+  .brand-sub { font-size:10px; color:#666; font-weight:600; margin-top:2px; }
+  .pill { display:flex; align-items:center; gap:6px; padding:5px 10px; border-radius:999px; background:rgba(255,255,255,.85); border:1px solid rgba(255,153,0,.4); font-size:11px; font-weight:700; color:#c45500; }
+  .dot { width:7px; height:7px; border-radius:50%; background:#FF9900; box-shadow:0 0 0 3px rgba(255,153,0,.25); }
+  .content { padding:14px; }
+  .panel { background:#fff; border:1px solid #e3e6e6; border-radius:12px; padding:14px; box-shadow:0 1px 0 rgba(0,0,0,.04),0 4px 12px rgba(0,0,0,.07); }
+  .panel-title { font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#565959; margin-bottom:8px; }
+  .current-step { font-size:13.5px; font-weight:700; color:#0f1111; margin-bottom:4px; }
+  .progress-info { font-size:12px; color:#565959; margin-bottom:14px; }
+  .track { height:7px; border-radius:99px; background:#e5e7eb; overflow:hidden; margin-bottom:4px; }
+  .track-fill { height:100%; width:38%; background:linear-gradient(90deg,#FFD814,#FF9900); border-radius:inherit; }
+  .track-meta { display:flex; justify-content:space-between; font-size:11px; color:#565959; font-variant-numeric:tabular-nums; margin-bottom:14px; }
+  .btn-stop { width:100%; padding:9px; background:#fde8e8; border:1px solid #f3c1c1; color:#b91c1c; font-size:12.5px; font-weight:700; border-radius:8px; }
+  .mini-log-wrap { margin-top:12px; padding-top:10px; border-top:1px dashed #e3e6e6; }
+  .mini-log { font-family:monospace; font-size:10px; color:#565959; }
+  .mini-log div { margin-bottom:2px; }
+  .log-success { color:#15803d; }
+  .log-info { color:#c45500; }
+  .log-warn { color:#a16207; }
+  .side { position:absolute; right:120px; top:50%; transform:translateY(-50%); color:#fff; max-width:340px; }
+  .side h2 { font-size:28px; font-weight:800; letter-spacing:-.02em; margin-bottom:12px; }
+  .side p { font-size:15px; color:#c9d0d5; line-height:1.6; margin-bottom:20px; }
+  .stat-row { display:flex; flex-direction:column; gap:10px; }
+  .stat { padding:14px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12); border-radius:10px; }
+  .stat .label { font-size:11px; color:#8f9192; text-transform:uppercase; letter-spacing:.05em; font-weight:700; margin-bottom:4px; }
+  .stat .value { font-size:20px; font-weight:800; color:#FFD814; }
+  body { position:relative; }
+</style>
+</head>
+<body>
+  <div class="side">
+    <h2>Live research<br>in progress</h2>
+    <p>AmazonHunt runs automatically. Watch as it discovers keywords and captures competition data.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="label">Keywords found</div><div class="value">14 / 20</div></div>
+      <div class="stat"><div class="label">Listings audited</div><div class="value">52 / 140</div></div>
+    </div>
+  </div>
+  <div class="popup">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <svg viewBox="0 0 36 36" width="22" height="22" fill="none">
+            <circle cx="15" cy="15" r="7" stroke="#FF9900" stroke-width="2.2" fill="none"/>
+            <path d="M20 20l7 7" stroke="#FF9900" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">AmazonHunt</div>
+          <div class="brand-sub">Free · Local niche research</div>
+        </div>
+      </div>
+      <div class="pill"><span class="dot"></span><span>Running</span></div>
+    </div>
+    <div class="content">
+      <div class="panel">
+        <div class="panel-title">Live research</div>
+        <div class="current-step">Step 3: Auditing listings for "yoga mat"</div>
+        <div class="progress-info">[52/140] Auditing listing B07XXKW9X3</div>
+        <div class="track"><div class="track-fill"></div></div>
+        <div class="track-meta"><span>52 done</span><span>~18 min left</span></div>
+        <button class="btn-stop">Stop</button>
+        <div class="mini-log-wrap">
+          <div class="mini-log">
+            <div class="log-info">09:14:22 [52/140] Auditing B07XXKW9X3</div>
+            <div class="log-success">09:14:15 B08ABC123: BSR #4,821, 892 reviews</div>
+            <div class="log-success">09:14:08 B07DEF456: BSR #12,004, 234 reviews</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="padding:10px 16px 12px;border-top:1px solid rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#565959;">
+      <span>Free · Local · amazon.com only</span><span style="font-weight:700;color:#232F3E">v1.0.0</span>
+    </div>
+  </div>
+</body>
+</html>
